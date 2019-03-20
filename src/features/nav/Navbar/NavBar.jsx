@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Menu, Button, Container } from "semantic-ui-react";
+import { Menu, Container, Button } from "semantic-ui-react";
 import { NavLink, Link, withRouter } from "react-router-dom";
-import SignOutMenu from "../Menus/SignedOutMenu";
+import SignedOutMenu from "../Menus/SignedOutMenu";
 import SignedInMenu from "../Menus/SignedInMenu";
 
 class NavBar extends Component {
@@ -28,7 +28,7 @@ class NavBar extends Component {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item as={Link} to="/" header>
-            <img src="assets/logo.png" alt="logo" />
+            <img src="/assets/logo.png" alt="logo" />
             Re-vents
           </Menu.Item>
           <Menu.Item as={NavLink} to="/events" name="Events" />
@@ -36,6 +36,7 @@ class NavBar extends Component {
           {authenticated && (
             <Menu.Item as={NavLink} to="/people" name="People" />
           )}
+
           {authenticated && (
             <Menu.Item>
               <Button
@@ -51,7 +52,7 @@ class NavBar extends Component {
           {authenticated ? (
             <SignedInMenu signOut={this.handleSignOut} />
           ) : (
-            <SignOutMenu signIn={this.handleSignIn} />
+            <SignedOutMenu signIn={this.handleSignIn} />
           )}
         </Container>
       </Menu>
